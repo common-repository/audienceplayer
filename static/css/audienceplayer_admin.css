@@ -1,0 +1,153 @@
+/* Class ".audienceplayer-admin" functions as a root selector to define AudiencePlayer code sections */
+.audienceplayer-admin .spinner {
+    vertical-align:top;
+    float: none;
+}
+
+.audienceplayer-fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.audienceplayer-fa:hover {
+    border-radius: 50%;
+    text-shadow: 0px 0px 8px #777777;
+}
+
+.audienceplayer-fa.excel:before {
+    /* excel icon: fa-file-excel */
+    color: #397a47;
+    content: "\f1c3";
+    font-size: 1rem;
+}
+button > .audienceplayer-fa.excel:before {
+    /* excel icon: fa-file-excel */
+    color: #ffffff;
+}
+
+.audienceplayer-fa.info:before {
+    /* info icon: fa-circle-info */
+    content: "\f05a";
+    font-size: 1rem;
+    cursor:pointer;
+}
+
+.audienceplayer-admin-code-block {
+    font-family: monospace;
+    background-color: #e0e0e0;
+    padding: 1px;
+
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+}
+
+.audienceplayer-admin-ol {
+    list-style-type: decimal;
+    list-style-position: outside;
+    padding-left: 16px;
+}
+.audienceplayer-admin-ul {
+    list-style-type: circle;
+    list-style-position: outside;
+    padding-left: 16px;
+}
+.audienceplayer-admin-ul li,
+.audienceplayer-admin-ol li {
+    padding-bottom:8px;
+}
+.audienceplayer-admin-ul-level1 {
+    list-style-type: square;
+    list-style-position: outside;
+    padding-top: 6px;
+    padding-left: 16px;
+}
+.audienceplayer-admin-ul-level1 li {
+    padding-bottom:0px;
+}
+
+.audienceplayer-admin-screenshot {
+    border: 1px solid #e0e0e0;
+    height: 200px;
+}
+
+.audienceplayer-admin-table .header td {
+    font-weight: bold;
+    border-bottom: 1px solid #000000;
+}
+
+.audienceplayer-admin-table .body td {
+    border-bottom: 1px solid #cccccc;
+}
+
+.audienceplayer-release-note {
+    border-top: 1px solid #cccccc;
+}
+
+.audienceplayer-release-note.last {
+    border-bottom: 1px solid #cccccc;
+}
+
+.audienceplayer-release-note h5 {
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 0.25rem 0;
+    margin: 0;
+}
+
+.audienceplayer-release-note .date {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    font-style: italic;
+}
+
+.audienceplayer-release-note .content {
+    margin-top: 0;
+    padding-bottom: 0;
+    font-style: italic;
+}
+
+.audienceplayer-release-note ul {
+    list-style-type: circle;
+    list-style-position: outside;
+    padding-left: 16px;
+}
+
+.apf-credit {
+    display: none !important;
+}
+
+#audienceplayer-plugin-page-load-stats {
+    display: none !important;
+}
+
+.audienceplayer-sctionsets h3 {
+    font-size: 1rem !important;
+    font-weight: normal !important;
+}
+
+.audienceplayer-sctionsets .audienceplayer-fieldset ul,
+.audienceplayer-sctionsets .audienceplayer-fieldset li {
+    margin: 0px;
+    font-size: 13px;
+}
+
+.audienceplayer-admin-warning {
+    color: #ca4a1f;
+}
+
+#fieldset-audienceplayer_config_api_is_synchronise_user_accounts {
+    border: 3px solid #ca4a1f;
+    padding: 6px;
+}
+
+#fieldset-audienceplayer_config_integrations_is_synchronise_woocommerce_entitlements {
+    border: 3px solid #ca4a1f;
+    padding: 6px;
+}

@@ -1,0 +1,84 @@
+<div class="audienceplayer-admin">
+
+    <h3>General</h3>
+
+    <p>
+        Features this plugin provides:
+    </p>
+    <ul class="audienceplayer-admin-ul">
+        <li>Automatic synchronisation of all user accounts between Wordpress and the AudiencePlayer backend. For more
+            information, see the help section <a
+                    href="?page={{SECTION_HELP_PAGE_SLUG}}&tab={{SECTION_HELP_TAB_USER_SYNC_PAGE_SLUG}}">{{SECTION_HELP_TAB_USER_SYNC_TITLE}}</a>.
+        </li>
+        <li>Shortcodes to integrate AudiencePlayer functionality in your Wordpress site. For more information, see the
+            help
+            section <a
+                    href="?page={{SECTION_HELP_PAGE_SLUG}}&tab={{SECTION_HELP_TAB_SHORTCODES_PAGE_SLUG}}">{{SECTION_HELP_TAB_SHORTCODES_TITLE}}</a>.<br/>
+            N.B. AudiencePlayer configurations and translations e.g. for dialogues and video Articles, are automatically
+            synchronised.
+        </li>
+        <li>
+            Integrated tools <a
+                href="https://github.com/AudiencePlayer/audienceplayer-api-client-php" target="_blank">AudiencePlayer
+            API Client for PHP</a> and <a
+                href="https://github.com/AudiencePlayer/audienceplayer-embed-player" target="_blank">AudiencePlayer
+            Embed Player for JavaScript</a> that allow you to further customise your integration in greater detail if
+            necessary. See both help sections <a
+                href="?page={{SECTION_HELP_PAGE_SLUG}}&tab={{SECTION_HELP_TAB_SHORTCODES_PAGE_SLUG}}">{{SECTION_HELP_TAB_SHORTCODES_TITLE}}</a>
+            and <a href="?page={{SECTION_HELP_PAGE_SLUG}}&tab={{SECTION_HELP_TAB_CODE_EXAMPLES_PAGE_SLUG}}">{{SECTION_HELP_TAB_CODE_EXAMPLES_TITLE}}</a>
+            for more information.
+        </li>
+        <li>Logs for debugging/troubleshooting purposes are available via menu item <a
+                href="?page={{SECTION_LOGS_PAGE_SLUG}}&tab={{SECTION_LOGS_TAB_OVERVIEW_PAGE_SLUG}}">{{SECTION_LOGS_MENU_TITLE}}</a>.
+        </li>
+    </ul>
+
+
+    <h3>General considerations</h3>
+
+
+    <p>
+        When setting up your AudiencePlayer integration in Wordpress, please pay close attention to the following
+        general
+        considerations:
+    </p>
+    <ul class="audienceplayer-admin-ul">
+        <li><strong>CREDENTIALS</strong> : Ensure that the AudiencePlayer OAuth credentials are never exposed on your
+            production website (e.g. mind debug settings and error handling).
+            Automatic synchronisation of all user accounts between Wordpress and the AudiencePlayer backend. Moderators
+            may
+            In general, it is strongly advised to pay close attention to the security of your Wordpress site.
+        </li>
+        <li><strong>SECURITY</strong> : We strongly advise you to setup security measures such as
+            "IP-Firewall/whitelisting"
+            and "rate-limiting". This is especially important if you have enabled AudiencePlayer User synchronisation
+            (enabled by default), which greatly expands the automatic actions that this plugin takes, such as creating,
+            modifying and deleting users!
+            <br/>
+            There are many <a href="https://wordpress.org/plugins/tags/security/"
+                              target="_blank">security plugins</a> available in the Wordpress ecosystem to consider.
+            Since the AudiencePlayer backend may also actively
+            synchronise user data with this Wordpress website, ensure that these actions are allowed in your setup (e.g.
+            by
+            your Firewall plugin).
+        </li>
+        <li><strong>HTTP/SSL</strong> : Ensure that <a href="https://en.wikipedia.org/wiki/HTTPS">HTTPS/SSL</a> is
+            ALWAYS
+            implemented on your Wordpress website. Not only does it dramatically increase overall security, it is also
+            required for 3rd party payment and encrypted video playback, facilitated by this plugin.
+        </li>
+        <li><strong>IN PRODUCTION</strong> : While in production, before upgrading this plugin always <strong>first
+            test</strong> on your test/staging environment. Plugin releases follow <a href="https://semver.org/"
+                                                                                      target="_blank">semantic
+            versioning</a>: Patch and minor updates are typically always safe roll out, however major version updates
+            may change or break existing functionality which may impact your integration. In any case, it is
+            <strong>always</strong> recommended you test first.
+        </li>
+        <li><strong>TROUBLESHOOTING</strong> : This plugin keeps its own log files, mainly of the User Synchronisation
+            efforts, which can be viewed in the section <a
+                    href="?page={{SECTION_LOGS_PAGE_SLUG}}&tab={{SECTION_LOGS_TAB_OVERVIEW_PAGE_SLUG}}">{{SECTION_LOGS_TAB_OVERVIEW_TITLE}}</a>.
+            They can be useful in case of any problems.
+        </li>
+    </ul>
+
+</div>

@@ -1,0 +1,35 @@
+<div class="audienceplayer-admin">
+
+    <br/>
+
+    <h3>AudiencePlayer account</h3>
+
+    <table class="form-table">
+
+        <tr>
+            <th><label for="audienceplayer_id">AudiencePlayer User ID</label></th>
+            <td>
+                <input type="text" name="audienceplayer_user_id"
+                       id="audienceplayer_admin_user_profile_audienceplayer_user_id"
+                       value="{{audienceplayer_user_id}}" class="regular-text"
+                       disabled="disabled"/><br/>
+                <span class="description">The ID of the corresponding AudiencePlayer User record.</span>
+            </td>
+        </tr>
+
+        <tr>
+            <th><label for="audienceplayer_admin_user_profile_force_sync_button">Synchronisation</label></th>
+            <td>
+                <p>
+                    <button type="button" class="button" id="audienceplayer_admin_user_profile_force_sync_button">
+                        Synchronise user
+                    </button>
+                    <span class="spinner"></span>
+                </p>
+                <p class="description">Force user synchronisation with AudiencePlayer platform.</p>
+            </td>
+        </tr>
+
+    </table>
+
+</div>

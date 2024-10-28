@@ -1,0 +1,1065 @@
+/* ### GENERAL STYLE ################################################################################################# */
+/* ################################################################################################################### */
+
+/* ### color variables ############################################################################################### */
+/* ################################################################################################################### */
+
+:root {
+    --global--color-audienceplayer: #e5272b;
+    --global--color-white: #fff;
+    --global--color-grey: #777;
+    --global--color-light-grey: #aaa;
+    --global--color-dark-grey: #333;
+    --global--color-black: #000;
+    --global--transparent: transparent;
+
+    --global--color-button-primary: var(--global--color-audienceplayer);
+    --global--color-button-secondary: var(--global--transparent);
+    --global--color-button-border: var(--global--color-audienceplayer);
+    --global--color-button-text-white: var(--global--color-white);
+    --global--color-button-text-grey: var(--global--color-light-grey);
+    --global--color-button-text-black: var(--global--color-black);
+    --global--color-tab-primary: var(--global--color-audienceplayer);
+    --global--color-tab-secondary: var(--global--color-black);
+
+    --chromecast-main-bg-color: #e7e7e7;
+    --chromecast-control-button-bg-color: #ffffff;
+    --chromecast-control-button-hover-bg-color: #ffffff;
+    --chromecast-tracks-dialogue-bg-color: #e9e9e9;
+    --chromecast-tracks-dialogue-shadow-color: rgb(0 0 0 / 20%);
+    --chromecast--track-item-hover-bg-color: #d4d0d0;
+}
+
+/* ### Font AweSome ### */
+
+.audienceplayer-fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.audienceplayer-fa:hover {
+    border-radius: 50%;
+    text-shadow: 0px 0px 8px var(--global--color-grey);
+}
+
+.audienceplayer-fa.play-circle:before {
+    /* play icon: fa-play-circle */
+    content: "\f144";
+    font-size: 5rem;
+}
+
+.audienceplayer-fa.play:before {
+    /* play icon: fa-play */
+    content: "\f04b";
+    font-size: 2rem;
+}
+
+.audienceplayer-fa.open:before {
+    /* open icon: fa-chevron-right */
+    content: "\f054";
+    font-size: 5rem;
+}
+
+.audienceplayer-fa.close:before {
+    /* close icon: fa-times */
+    content: "\f00d";
+    font-size: 3rem;
+}
+
+.audienceplayer-fa.pagination-bullet:before {
+    /* close icon: fa-times */
+    content: "\f111";
+    font-size: 1rem;
+    color: var(--global--color-grey);
+}
+
+.audienceplayer-fa.pagination-bullet-active:before {
+    /* close icon: fa-times */
+    content: "\f111";
+    font-size: 1rem;
+    color: var(--global--color-audienceplayer);
+}
+
+/* ### Parental icons ### */
+
+.audienceplayer-parental {
+    background-size: cover;
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+}
+
+.audienceplayer-parental-6 {
+    background-image: url("../icons/kijkwijzer-6.png");
+}
+
+.audienceplayer-parental-9 {
+    background-image: url("../icons/kijkwijzer-9.png");
+}
+
+.audienceplayer-parental-12 {
+    background-image: url("../icons/kijkwijzer-12.png");
+}
+
+.audienceplayer-parental-14 {
+    background-image: url("../icons/kijkwijzer-14.png");
+}
+
+.audienceplayer-parental-16 {
+    background-image: url("../icons/kijkwijzer-16.png");
+}
+
+.audienceplayer-parental-18 {
+    background-image: url("../icons/kijkwijzer-18.png");
+}
+
+.audienceplayer-parental-A {
+    background-image: url("../icons/kijkwijzer-eng.png");
+}
+
+.audienceplayer-parental-AL {
+    background-image: url("../icons/kijkwijzer-AL.png");
+}
+
+.audienceplayer-parental-D {
+    background-image: url("../icons/kijkwijzer-discriminatie.png");
+}
+
+.audienceplayer-parental-G {
+    background-image: url("../icons/kijkwijzer-geweld.png");
+}
+
+.audienceplayer-parental-S {
+    background-image: url("../icons/kijkwijzer-seks.png");
+}
+
+.audienceplayer-parental-T {
+    background-image: url("../icons/kijkwijzer-groftaalgebruik.png");
+}
+
+.audienceplayer-parental-V {
+    background-image: url("../icons/kijkwijzer-drugs.png");
+}
+
+/* ### Toggle button input ### */
+
+.audienceplayer-toggle-input .toggle-input *,
+.audienceplayer-toggle-input .toggle-input *:before,
+.audienceplayer-toggle-input .toggle-input *:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    /*transition*/
+    -webkit-transition: .25s ease-in-out;
+    -moz-transition: .25s ease-in-out;
+    -o-transition: .25s ease-in-out;
+    transition: .25s ease-in-out;
+    outline: none;
+    font-family: Helvetica Neue, helvetica, arial, verdana, sans-serif;
+}
+
+.audienceplayer-toggle-input .toggle-input {
+    width: 60px;
+    text-align: center;
+}
+
+.audienceplayer-toggle-input .toggle-input input,
+.audienceplayer-toggle-input .toggle-input input:active {
+    /*position: absolute;*/
+    /*top: -5000px;*/
+    height: 0;
+    width: 0;
+    opacity: 0;
+    border: none;
+    outline: none;
+}
+
+.audienceplayer-toggle-input .toggle-input label {
+    display: block;
+    position: relative;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 12px;
+    line-height: 16px;
+    width: 100%;
+    height: 36px;
+    /*border-radius*/
+    -webkit-border-radius: 18px;
+    -moz-border-radius: 18px;
+    border-radius: 18px;
+    background: #f8f8f8;
+    cursor: pointer;
+}
+
+.audienceplayer-toggle-input .toggle-input label:before {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 1;
+    line-height: 34px;
+    text-indent: 40px;
+    height: 36px;
+    width: 36px;
+    /*border-radius*/
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    top: 0px;
+    left: 0px;
+    right: auto;
+    background: white;
+    /*box-shadow*/
+    -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, .2), 0 0 0 2px #dddddd;
+    -moz-box-shadow: 0 3px 3px rgba(0, 0, 0, .2), 0 0 0 2px #dddddd;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, .2), 0 0 0 2px #dddddd;
+}
+
+.audienceplayer-toggle-input .toggle-input label:after {
+    content: attr(data-off);
+    display: block;
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: -300px;
+    padding: 10px;
+    height: 100%;
+    width: 300px;
+    text-align: right;
+    color: var(--global--color-audienceplayer);
+    white-space: nowrap;
+}
+
+.audienceplayer-toggle-input .toggle-input input:checked + label {
+    /*box-shadow*/
+    -webkit-box-shadow: inset 0 0 0 20px rgba(19, 191, 17, 1), 0 0 0 2px rgba(19, 191, 17, 1);
+    -moz-box-shadow: inset 0 0 0 20px rgba(19, 191, 17, 1), 0 0 0 2px rgba(19, 191, 17, 1);
+    box-shadow: inset 0 0 0 20px rgba(19, 191, 17, 1), 0 0 0 2px rgba(19, 191, 17, 1);
+}
+
+.audienceplayer-toggle-input .toggle-input input:checked + label:before {
+    left: calc(100% - 36px);
+    /*box-shadow*/
+    -webkit-box-shadow: 0 0 0 2px transparent, 0 3px 3px rgba(0, 0, 0, .3);
+    -moz-box-shadow: 0 0 0 2px transparent, 0 3px 3px rgba(0, 0, 0, .3);
+    box-shadow: 0 0 0 2px transparent, 0 3px 3px rgba(0, 0, 0, .3);
+}
+
+.audienceplayer-toggle-input .toggle-input input:checked + label:after {
+    content: attr(data-on);
+    left: 60px;
+    width: 36px;
+}
+
+.audienceplayer-toggle-input .toggle-input input + label {
+    /*box-shadow*/
+    -webkit-box-shadow: inset 0 0 0 0px rgba(19, 191, 17, 1), 0 0 0 2px #dddddd;
+    -moz-box-shadow: inset 0 0 0 0px rgba(19, 191, 17, 1), 0 0 0 2px #dddddd;
+    box-shadow: inset 0 0 0 0px rgba(19, 191, 17, 1), 0 0 0 2px #dddddd;
+    background-color: var(--global--color-audienceplayer);
+}
+
+.audienceplayer-toggle-input .toggle-input input:checked + label {
+    /*box-shadow*/
+    -webkit-box-shadow: inset 0 0 0 18px rgba(19, 191, 17, 1), 0 0 0 2px rgba(19, 191, 17, 1);
+    -moz-box-shadow: inset 0 0 0 18px rgba(19, 191, 17, 1), 0 0 0 2px rgba(19, 191, 17, 1);
+    box-shadow: inset 0 0 0 18px rgba(19, 191, 17, 1), 0 0 0 2px rgba(19, 191, 17, 1);
+}
+
+.audienceplayer-toggle-input .toggle-input input:checked + label:after {
+    color: rgba(19, 191, 17, 1);
+}
+
+/* button loading */
+.audienceplayer-button-loading {
+    color: transparent !important;
+    background-image: url('../icons/ajax-loader-dark.gif');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* ### audienceplayer-modal ########################################################################################## */
+/* ################################################################################################################### */
+
+/* general modal dialog windows */
+.audienceplayer-modal {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    z-index: 10000;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    background-image: url('../icons/ajax-loader-dark.gif');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.audienceplayer-modal .content {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 300px;
+    min-height: 200px;
+    text-align: center;
+    background-color: var(--global--color-white);
+}
+
+.audienceplayer-modal .message {
+    padding: 4rem 2rem;
+    margin: 0px 10%;
+}
+
+.audienceplayer-modal .value-character-input {
+    border: 1px solid var(--global--color-dark-grey);
+    width: 250px;
+    display: inline-block;
+    height: 100%;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.audienceplayer-modal .buttons {
+    padding: 0.5rem;
+    margin: 0 10% 1rem 10%;
+}
+
+.audienceplayer-modal .buttons .cancel {
+    background-color: transparent;
+    color: var(--global--color-audienceplayer);
+}
+
+.audienceplayer-modal .buttons .ok {
+    background-color: var(--global--color-button-primary);
+    border: 2px solid var(--global--color-button-primary);
+    border-radius: .625rem;
+    color: var(--global--color-button-text-white);
+}
+
+.audienceplayer-modal button.close {
+    color: var(--global--color-black);
+    border: 0px;
+    position: absolute !important;
+    top: 0px !important;
+    right: 0px !important;
+    background-color: transparent !important;
+    z-index: 10001 !important;
+    text-shadow: 0px 0px 20px rgb(0 0 0 / 0.3);
+    outline: none;
+}
+
+/* voucher validation + purchase */
+.audienceplayer-modal .voucher {
+    padding: 2rem 0.5rem 4rem 0.5rem;
+}
+
+.audienceplayer-modal .voucher-description {
+    font-style: italic;
+    font-size: 1rem;
+}
+
+.audienceplayer-modal .voucher-input {
+    padding-top: 0.5rem;
+    height: 4rem;
+}
+
+.audienceplayer-modal-purchase .buttons {
+    display: inline-block;
+    margin: 0 auto 1rem auto;
+}
+
+.audienceplayer-modal .voucher-code-input {
+    border: 1px solid var(--global--color-dark-grey);
+    display: inline-block;
+    height: 4rem;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    vertical-align: top;
+}
+
+.audienceplayer-modal .voucher-validate-button {
+    background-color: var(--global--color-button-primary);
+    border: 2px solid var(--global--color-button-primary);
+    border-radius: .625rem;
+    color: var(--global--color-button-text-white);
+    display: inline-block;
+    height: 4rem;
+    vertical-align: top;
+    line-height: 0rem;
+}
+
+.audienceplayer-modal .voucher-code-validation-result {
+    padding-top: 8px;
+    font-weight: bold;
+}
+
+.audienceplayer-modal .error {
+    color: #d91111;
+}
+
+.audienceplayer-modal .price {
+    font-weight: bold;
+    font-size: 2rem;
+    display: inline-block;
+    padding-right: 0.5rem;
+}
+
+/* user subscription switch modal */
+
+.audienceplayer-modal-subscription-switch-banners .message {
+    padding: 4rem 1rem 1rem 1rem;
+}
+
+.audienceplayer-modal .subscription-switch-banners {
+    text-align: center;
+    margin: 0 0 2rem 0;
+}
+
+.audienceplayer-modal .subscription-switch-banners .banner {
+    border: 3px solid var(--global--color-black);
+    width: 220px;
+    display: inline-block;
+    margin: 1rem;
+    text-align: center;
+}
+
+.audienceplayer-modal .subscription-switch-banners .banner .popular-choice {
+    height: 3rem;
+    line-height: 3rem;
+    position: relative;
+    font-weight: bold;
+    color: var(--global--color-audienceplayer);
+}
+
+.audienceplayer-modal .subscription-switch-banners .banner.is-popular-choice .popular-choice {
+    background-color: var(--global--color-white);
+}
+
+.audienceplayer-modal .subscription-switch-banners .banner .title {
+    height: 60px;
+}
+
+.audienceplayer-modal .subscription-switch-banners .banner .description {
+    padding-top: 1rem;
+    height: 150px;
+    overflow: hidden;
+}
+
+.audienceplayer-modal .subscription-switch-banners .banner .price {
+    display: inline-block;
+}
+
+.audienceplayer-modal .subscription-switch-banners .banner .time-unit {
+    padding-left: 0.5rem;
+    display: inline-block;
+}
+
+.audienceplayer-modal .subscription-switch-banners .banner button {
+    background-color: var(--global--color-button-primary);
+    border: 2px solid var(--global--color-button-primary);
+    border-radius: .625rem;
+    color: var(--global--color-button-text-white);
+    margin: 2rem 0;
+}
+
+.audienceplayer-modal .subscription-switch-banners .banner button.disabled {
+    background-color: var(--global--color-grey);
+    border: 2px solid var(--global--color-grey);
+    border-radius: .625rem;
+    color: var(--global--color-button-text-grey);
+    margin: 2rem 0;
+    cursor: not-allowed;
+}
+
+/* default modal overrides mobile view */
+@media only screen and (max-width: 1000px) {
+
+    /* display modal full screen in mobile view */
+    .audienceplayer-modal .content {
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+    }
+}
+
+#audienceplayer-modal-video-player.audienceplayer-modal {
+    background-image: unset;
+}
+
+#audienceplayer-modal-video-player.audienceplayer-modal .media-player {
+    position: unset;
+    width: 100%;
+    height: 100%;
+}
+
+#audienceplayer-modal-video-player.audienceplayer-modal .media-player .video-js .vjs-overlay .meta-wrapper {
+    border:0px solid #f00;
+    padding-top: calc(5vh + 0.5rem);
+    padding-left: calc(5vw + 2em);
+}
+#audienceplayer-modal-video-player.audienceplayer-modal .media-player .video-js .vjs-overlay .meta-title {
+    position: relative;
+    font-size:1.5rem;
+    font-weight:bold;
+}
+#audienceplayer-modal-video-player.audienceplayer-modal .media-player .video-js .vjs-overlay .meta-element {
+    position: relative;
+    padding-top: 1rem;
+}
+
+#audienceplayer-modal-video-player.audienceplayer-modal .media-player .video-js .vjs-custom-overlay {
+    position: absolute;
+    top: calc(5vh);
+    left: calc(5vh);
+    visibility: visible;
+    opacity: 0;
+    transition: visibility 0.3s, opacity 0.3s;
+    z-index: 3;
+}
+#audienceplayer-modal-video-player.audienceplayer-modal .media-player .video-js.vjs-user-active .vjs-custom-overlay {
+    opacity: 1;
+}
+
+#audienceplayer-modal-video-player.audienceplayer-modal .media-player .video-js .vjs-custom-overlay .close-button {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0.25rem;
+    border-radius: 50%;
+}
+#audienceplayer-modal-video-player.audienceplayer-modal .media-player .video-js .vjs-custom-overlay .close-button:hover {
+    background-color: #3a434f;
+}
+#audienceplayer-modal-video-player.audienceplayer-modal .media-player .video-js .vjs-custom-overlay .close-button i {
+    position:relative;
+    font-weight:bold;
+    left:-2px;
+    font-size: 1.75rem;
+    color: #fcfcfc;
+}
+
+/* modal video player overrides */
+@media (max-aspect-ratio: 16/9) {
+
+    #audienceplayer-modal-video-player button.close {
+        color: var(--global--color-white);
+        top: calc(5vh) !important;
+        right: calc(5vw) !important;
+    }
+}
+
+@media (min-aspect-ratio: 16/9) {
+
+    #audienceplayer-modal-video-player button.close {
+        color: var(--global--color-white);
+        top: 10vh !important;
+        right: calc(50vw - calc(40vh * 1.7)) !important;
+    }
+}
+
+/* ### chromecast-interface ########################################################################################## */
+/* ################################################################################################################### */
+
+body .chromecast-controls.video-js {
+    position: fixed;
+    bottom: 0;
+    top: unset;
+    height: 3em;
+}
+
+body .chromecast-controls.video-js .vjs-control-bar {
+    background: linear-gradient(#00000050, #000000ff);
+}
+
+body .chromecast-controls.video-js .vjs-control-bar .vjs-menu li.vjs-selected,
+body .chromecast-controls.video-js .vjs-control-bar .vjs-menu li.vjs-selected:focus,
+body .chromecast-controls.video-js .vjs-control-bar .vjs-menu li.vjs-selected:hover,
+body .chromecast-controls.video-js .vjs-control-bar .js-focus-visible .vjs-menu li.vjs-selected:hover {
+    background-color: #3a434f;
+    color: unset;
+}
+
+/* ### audienceplayer-article-carousel / audienceplayer-article-grid ################################################# */
+/* ################################################################################################################### */
+
+.audienceplayer-article-carousel .grid-item {
+    overflow: hidden;
+    height: inherit;
+    position: relative;
+}
+
+.audienceplayer-article-carousel .grid-item .image {
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.audienceplayer-article-carousel .grid-item .action-link {
+    text-align: center;
+    position: absolute;
+    top: calc(50% - 3rem);
+    width: 100%;
+}
+
+.audienceplayer-article-carousel .grid-item .action-link a {
+    background-color: transparent !important;
+    outline: none;
+}
+
+.audienceplayer-article-carousel .grid-item .progress-bar {
+    display: none;
+    position: absolute;
+    height: 8px;
+    bottom: 0px;
+    width: 100%;
+}
+
+.audienceplayer-article-carousel .grid-item .progress-bar .progress {
+    height: 8px;
+    background-color: var(--global--color-audienceplayer);
+    opacity: 0.6;
+    width: 0%;
+}
+
+.audienceplayer-article-carousel .grid-item .title {
+    font-size: 1rem;
+    padding: 0.5rem;
+}
+
+/* overrides for simple matrix grid display */
+.audienceplayer-article-carousel.matrix {
+    margin: 0% 5%;
+}
+
+.audienceplayer-article-carousel.matrix .grid-item {
+    display: inline-block;
+    padding: 0 2rem;
+}
+
+.audienceplayer-article-carousel .paginator {
+    text-align: center;
+}
+
+.audienceplayer-article-carousel .paginator .bullet {
+    display: inline-block;
+    padding: 1rem;
+}
+
+.audienceplayer-embed-article {
+    overflow: hidden;
+}
+
+.audienceplayer-embed-article iframe {
+    overflow: hidden;
+}
+
+/* ### audienceplayer-play-article-button ############################################################################ */
+/* ################################################################################################################### */
+
+.audienceplayer-play-article-button button {
+    background-color: var(--global--color-button-primary);
+    border: 2px solid var(--global--color-button-primary);
+    border-radius: .625rem;
+    color: var(--global--color-button-text-white);
+}
+
+.audienceplayer-play-article-button button:hover {
+    background-color: var(--global--color-button-primary);
+    color: var(--global--color-button-text-white);
+    border-color: var(--global--color-button-primary);
+}
+
+.audienceplayer-play-article-button .progress-bar {
+    display: none;
+    margin-top: 4px;
+    background-color: var(--global--color-black);
+    height: 8px;
+    opacity: 0.6;
+}
+
+.audienceplayer-play-article-button .progress-bar .progress {
+    height: 8px;
+    background-color: var(--global--color-audienceplayer);
+    width: 0%;
+    opacity: 1.0;
+}
+
+.audienceplayer-play-article-button .play {
+    padding-right: 8px;
+}
+
+.audienceplayer-play-article-button .play:before {
+    font-size: inherit;
+}
+
+.audienceplayer-play-article-button.trailer button {
+    background-color: var(--global--color-button-secondary);
+    border-color: var(--global--color-button-border);
+}
+
+/* ### audienceplayer-purchase-product-button ######################################################################## */
+/* ################################################################################################################### */
+
+.audienceplayer-purchase-product-button button {
+    background-color: var(--global--color-button-primary);
+    border: 2px solid var(--global--color-button-primary);
+    border-radius: .625rem;
+    color: var(--global--color-button-text-white);
+}
+
+.audienceplayer-purchase-product-button button:hover {
+    background-color: var(--global--color-button-primary);
+    color: var(--global--color-button-text-white);
+    border-color: var(--global--color-button-primary);
+}
+
+/* ### audienceplayer-purchase-subscriptions ######################################################################### */
+/* ################################################################################################################### */
+
+.audienceplayer-purchase-subscriptions {
+    text-align: center;
+}
+
+.audienceplayer-purchase-subscriptions .banner {
+    border: 3px solid var(--global--color-black);
+    width: 220px;
+    display: inline-block;
+    margin: 1rem;
+    text-align: center;
+}
+
+.audienceplayer-purchase-subscriptions .banner .popular-choice {
+    height: 3rem;
+    line-height: 3rem;
+    position: relative;
+    font-weight: bold;
+    color: var(--global--color-audienceplayer);
+}
+
+.audienceplayer-purchase-subscriptions .banner.is-popular-choice .popular-choice {
+    background-color: var(--global--color-white);
+}
+
+.audienceplayer-purchase-subscriptions .banner .title {
+    height: 60px;
+}
+
+.audienceplayer-purchase-subscriptions .banner .description {
+    padding-top: 1rem;
+    height: 150px;
+    overflow: hidden;
+}
+
+.audienceplayer-purchase-subscriptions .banner .price {
+    display: inline-block;
+}
+
+.audienceplayer-purchase-subscriptions .banner .time-unit {
+    padding-left: 0.5rem;
+    display: inline-block;
+}
+
+.audienceplayer-purchase-subscriptions .banner button {
+    background-color: var(--global--color-button-primary);
+    border: 2px solid var(--global--color-button-primary);
+    border-radius: .625rem;
+    color: var(--global--color-button-text-white);
+    margin: 2rem 0;
+}
+
+/* ### audienceplayer-article-detail ################################################################################# */
+/* ################################################################################################################### */
+
+.audienceplayer-article-detail {
+    margin: 2rem;
+}
+
+.audienceplayer-article-detail .metadata {
+    background-color: var(--global--color-white);
+    padding: 2rem;
+}
+
+.audienceplayer-article-detail .description {
+    padding-bottom: 2rem;
+}
+
+.audienceplayer-article-detail .metadata .meta-label {
+    font-weight: bold;
+    padding-bottom: 0.5rem;
+}
+
+.audienceplayer-article-detail .metadata .meta-value {
+    padding-bottom: 1rem;
+}
+
+.audienceplayer-article-detail .header {
+    position: relative;
+    background-color: var(--global--color-black);
+    min-height: 300px;
+}
+
+.audienceplayer-article-detail .poster {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.7;
+}
+
+.audienceplayer-article-detail .header .title {
+    position: relative;
+    color: var(--global--color-white);
+}
+
+.audienceplayer-article-detail .header .title h1 {
+    padding: 1rem;
+}
+
+.audienceplayer-article-detail .header .buttons-play {
+    position: relative;
+    padding: 1rem;
+}
+
+.audienceplayer-article-detail .header .buttons-play .audienceplayer-play-article-button {
+    display: inline-block;
+    padding-right: 1rem;
+}
+
+.audienceplayer-article-detail .header .buttons-product {
+    position: relative;
+    padding: 1rem;
+}
+
+.audienceplayer-article-detail .header .buttons-product .audienceplayer-purchase-product-button {
+    display: inline-block;
+    padding-right: 1rem;
+}
+
+.audienceplayer-article-detail .description {
+    padding-top: 1rem;
+}
+
+.audienceplayer-article-detail .season-tab {
+    margin: 0.5rem 1.5rem 0.5rem 0;
+    display: inline-block;
+    font-weight: bold;
+    color: var(--global--color-tab-secondary);
+}
+
+.audienceplayer-article-detail .season-tab.active {
+    border-bottom: 2px solid var(--global--color-tab-primary);
+    color: var(--global--color-tab-primary);
+}
+
+.audienceplayer-article-detail .season-tab a,
+.audienceplayer-article-detail .season-tab a:hover {
+    text-decoration: none;
+    color: var(--global--color-tab-secondary);
+}
+
+.audienceplayer-article-detail .season-tab.active a,
+.audienceplayer-article-detail .season-tab.active a:hover {
+    text-decoration: none;
+    color: var(--global--color-tab-primary);
+}
+
+.audienceplayer-article-detail .season-description {
+    margin: 0.5rem 0;
+}
+
+/* ### audienceplayer-user-account ################################################################################### */
+/* ################################################################################################################### */
+
+.audienceplayer-user-account .section {
+    border-top: 2px solid var(--global--color-black);
+    padding: 10px 0 20px 0;
+    text-align: left;
+}
+
+.audienceplayer-user-account .label {
+    font-weight: bold;
+    padding-bottom: 0.5rem;
+}
+
+.audienceplayer-user-account .subscription-info .subsection {
+    display: inline-block;
+    padding-right: 4rem;
+    vertical-align: top;
+    text-align: left;
+}
+
+.audienceplayer-user-account .subscription-info .value {
+    padding-bottom: 0.5rem;
+}
+
+.audienceplayer-user-account .subscription-info .invoiced-at .message {
+    color: var(--global--color-grey);
+    font-style: italic;
+}
+
+.audienceplayer-user-account .subscription-info .invoiced-at .value.disabled {
+    color: var(--global--color-grey);
+    text-decoration: line-through;
+}
+
+.audienceplayer-user-account .voucher-redeem {
+}
+
+.audienceplayer-user-account .voucher-redeem .input {
+    height: 4rem;
+    display: inline-block;
+    padding-right: 4rem;
+    line-height: 4rem;
+}
+
+.audienceplayer-user-account .voucher-redeem input {
+    border: 1px solid var(--global--color-dark-grey);
+    width: 250px;
+    display: inline-block;
+    height: 100%;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    vertical-align: top;
+}
+
+.audienceplayer-user-account .voucher-redeem .button {
+    background-color: var(--global--color-button-primary);
+    border: 2px solid var(--global--color-button-primary);
+    border-radius: .625rem;
+    color: var(--global--color-button-text-white);
+    display: inline-block;
+}
+
+.audienceplayer-user-account .voucher-redeem .button:hover {
+    background-color: var(--global--color-button-primary);
+    border: 2px solid var(--global--color-button-primary);
+    border-radius: .625rem;
+    color: var(--global--color-button-text-white);
+    display: inline-block;
+}
+
+.audienceplayer-user-account .voucher-redeem button {
+    background-color: var(--global--color-button-primary);
+    border: 0;
+    border-radius: .625rem;
+    color: var(--global--color-button-text-white);
+    display: inline-block;
+    vertical-align: top;
+    padding: 1rem;
+    line-height: 0rem;
+}
+
+.audienceplayer-user-account .subscription-suspend {
+}
+
+.audienceplayer-user-account .subscription-suspend .description {
+    display: inline-block;
+    vertical-align: top;
+    padding: 0.5rem 10rem 0 0;
+}
+
+.audienceplayer-user-account .subscription-suspend .value {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.audienceplayer-user-account .payment-orders .table td {
+    word-break: normal;
+}
+
+.audienceplayer-user-account .payment-orders .table .header {
+    font-weight: bold;
+}
+
+/* ### audienceplayer-device-pairing ################################################################################# */
+/* ################################################################################################################### */
+
+.audienceplayer-device-pairing .section {
+    border-top: 2px solid var(--global--color-black);
+    padding: 10px 0 20px 0;
+}
+
+.audienceplayer-device-pairing .label {
+    font-weight: bold;
+    padding-bottom: 0.5rem;
+}
+
+.audienceplayer-device-pairing .image {
+    width: 320px;
+    height: 230px;
+    background-image: url("../images/device-pairing.png");
+    background-size: cover;
+}
+
+.audienceplayer-device-pairing .description {
+    padding: 1rem 0;
+}
+
+.audienceplayer-device-pairing .claim-device .input {
+    height: 4rem;
+    display: inline-block;
+    padding-right: 4rem;
+    line-height: 4rem;
+}
+
+.audienceplayer-device-pairing .claim-device input {
+    border: 1px solid var(--global--color-dark-grey);
+    width: 250px;
+    display: inline-block;
+    height: 100%;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    vertical-align: top;
+}
+
+.audienceplayer-device-pairing .claim-device .button {
+    background-color: var(--global--color-button-primary);
+    border: 2px solid var(--global--color-button-primary);
+    border-radius: .625rem;
+    color: var(--global--color-button-text-white);
+    display: inline-block;
+}
+
+.audienceplayer-device-pairing .claim-device .button:hover {
+    background-color: var(--global--color-button-primary);
+    border: 2px solid var(--global--color-button-primary);
+    border-radius: .625rem;
+    color: var(--global--color-button-text-white);
+    display: inline-block;
+}
+
+.audienceplayer-device-pairing .claim-device button {
+    background-color: var(--global--color-button-primary);
+    border-radius: .625rem;
+    color: var(--global--color-button-text-white);
+    border: 0px;
+    display: inline-block;
+    vertical-align: top;
+    padding: 1rem;
+    line-height: 0rem;
+}
+
+.audienceplayer-device-pairing .user-devices .table td {
+    word-break: normal;
+}
+
+.audienceplayer-device-pairing .user-devices .table .header {
+    font-weight: bold;
+}
+
+/* ################################################################################################################### */

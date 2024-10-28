@@ -1,0 +1,48 @@
+{
+    "name": "audienceplayer/wordpress-plugin",
+    "description": "AudiencePlayer WordPress plugin",
+    "authors": [
+        {
+            "name": "AudiencePlayer",
+            "email": "support@audienceplayer.com"
+        }
+    ],
+    "keywords": [
+        "audienceplayer",
+        "wordpress",
+        "plugin"
+    ],
+    "license": "MIT",
+    "type": "wordpress-plugin",
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=7.1",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "audienceplayer/audienceplayer-api-client-php": "^2"
+    },
+    "autoload": {
+        "classmap": [
+        ],
+        "psr-4": {
+        },
+        "files": [
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+        },
+        "files": [
+        ]
+    },
+    "scripts": {
+        "test": "phpstan"
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.9"
+    }
+}

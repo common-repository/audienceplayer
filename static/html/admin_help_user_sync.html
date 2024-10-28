@@ -1,0 +1,79 @@
+<div class="audienceplayer-admin">
+
+    <h3>User Synchronisation</h3>
+
+    This plugin provides automatic synchronisation between the user accounts stored in the AudiencePlayer backend and
+    those
+    stored in the Wordpress website. This functionality is required for most of the features this plugin provides, such
+    as
+    3rd party payments and entitled/purchased video content. Before enabling it, please pay close attention to the
+    following
+    notes:
+
+    <ol class="audienceplayer-admin-ol">
+        <li>
+            Begin by configuring the credentials (see AudiencePlayer CMS: "Project configuration > Integrations") in the
+            configuration section <a
+                href="?page={{SECTION_CONFIGURATION_PAGE_SLUG}}&tab={{SECTION_CONFIGURATION_TAB_API_PAGE_SLUG}}">{{SECTION_CONFIGURATION_TAB_API_TITLE}}</a>,
+            you can activate user synchronisation there as well.<br/>
+            <span class="audienceplayer-admin-warning"><strong>WARNING</strong>: When activated, all user actions taken such
+            as deleting a user in Wordpress, will immediately be applied to the AudiencePlayer backend!!! Keep this in
+            mind especially while still testing/developing in your Wordpress environment!!!</span>
+        </li>
+        <li>
+            If you enable users to register via another channel than the website (e.g. TV-apps, mobile apps etc), then
+            <a href="mailto:support@audienceplayer.com">contact</a> AudiencePlayer to ensure two-way synchronisation is
+            enabled for your account. That ensures that users will also be able to login via the Wordpress website.
+        </li>
+        <li>
+            When activated, moderators may inspect the synchronisation status <a href="/wp-admin/users.php">per user</a>
+            and
+            re-synchronise accounts as well.
+        </li>
+        <li>
+            When activated, any Wordpress user (including admins!) can ONLY login with e-mail address and password
+            (username
+            will NOT be accepted).
+        </li>
+        <li>
+            When NOT activated, users will NOT be synchronised and after logging into Wordpress, may encounter problems
+            using certain features such as product/subscription purchase, playback of purchased/entitled videos etc.
+            This
+            can result in error messages such as "user not synchronised" or error code "407".
+        </li>
+        <li>
+            Besides e-mail, password, first_name and last_name, you may wish to collect additional user metadata in
+            Wordpress e.g. during registration, such as birthdays, address etc.
+            The following meta properties (in the user_meta table) can be synchronised with the AudiencePlayer
+            backend, if
+            you conform to the following property names:
+            <ul class="audienceplayer-admin-ul-level1">
+                <li><em>address</em>: string value containing the address/street name, e.g. "Bakerstreet 123"</li>
+                <li><em>postal_code</em>: string value containing the postal/zip code, e.g. "1245CT"</li>
+                <li><em>city</em>: string value containing city name, e.g. "Amsterdam"</li>
+                <li><em>country</em>: string value containing two-digit country code, e.g. "NL"</li>
+                <li><em>gender</em>: string value containing the gender, supported values: ["male", "female",
+                    "non_binary",
+                    "unknown"]
+                </li>
+                <li><em>height</em>: numeric value containing the height in centimeters (cm), e.g. "185"</li>
+                <li><em>weight</em>: numeric value containing the weight in kilograms (kg), e.g. "75"</li>
+            </ul>
+        </li>
+        <li>
+            Developers note: There are many Wordpress hooks addressed by this plugin to achieve redundant User
+            synchronisation. If you use code and/or other plugins that affect user management and/or authentication, the
+            hooks listed below deserve special attention should you use them as well. For a thorough overview, see the
+            plugin file "BootstrapTrait.php" for the exact implementation.<br/>
+            <ul class="audienceplayer-admin-ul-level1">
+                <li><em>user_register</em>: synchronise user, add user</li>
+                <li><em>email_change_email</em>: synchronise user</li>
+                <li><em>user_profile_update_errors</em>: synchronise user, create user</li>
+                <li><em>registration_errors</em>: synchronise user, create user</li>
+                <li><em>delete_user</em>: synchronise user, delete user</li>
+                <li><em>deleted_user</em>: synchronise user user</li>
+            </ul>
+        </li>
+    </ol>
+
+</div>

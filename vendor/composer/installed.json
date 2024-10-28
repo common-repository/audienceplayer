@@ -1,0 +1,65 @@
+{
+    "packages": [
+        {
+            "name": "audienceplayer/audienceplayer-api-client-php",
+            "version": "v2.0.1",
+            "version_normalized": "2.0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/AudiencePlayer/audienceplayer-api-client-php.git",
+                "reference": "08f22197c8deea5667bb59bc6b2cf3f5fcaff8e1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/AudiencePlayer/audienceplayer-api-client-php/zipball/08f22197c8deea5667bb59bc6b2cf3f5fcaff8e1",
+                "reference": "08f22197c8deea5667bb59bc6b2cf3f5fcaff8e1",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "codedungeon/phpunit-result-printer": "^0.29.3",
+                "johnkary/phpunit-speedtrap": "^3.2",
+                "phpstan/phpstan": "^1.9",
+                "phpunit/phpunit": "^8",
+                "symfony/var-dumper": "^5.1"
+            },
+            "time": "2023-02-03T10:12:05+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "AudiencePlayer\\": "src/AudiencePlayer/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Audienceplayer",
+                    "email": "support@audienceplayer.com"
+                }
+            ],
+            "description": "AudiencePlayer API client library for PHP.",
+            "homepage": "https://github.com/audienceplayer/audienceplayer-api-client-php",
+            "keywords": [
+                "API-Client",
+                "audienceplayer",
+                "platform",
+                "video"
+            ],
+            "support": {
+                "issues": "https://github.com/AudiencePlayer/audienceplayer-api-client-php/issues",
+                "source": "https://github.com/AudiencePlayer/audienceplayer-api-client-php/tree/v2.0.1"
+            },
+            "install-path": "../audienceplayer/audienceplayer-api-client-php"
+        }
+    ],
+    "dev": false,
+    "dev-package-names": []
+}

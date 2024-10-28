@@ -1,0 +1,280 @@
+# Copyright (C) 2023 AudiencePlayer
+# This file is distributed under the same license as the AudiencePlayer plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: 5.0.2\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/audienceplayer\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2023-06-13T09:28:40+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.5.0\n"
+"X-Domain: audienceplayer\n"
+
+#. Plugin Name of the plugin
+#. Author of the plugin
+msgid "AudiencePlayer"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://support.audienceplayer.com"
+msgstr ""
+
+#. Description of the plugin
+msgid "AudiencePlayer integration"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://www.audienceplayer.com"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:149
+msgid "AudiencePlayer project id"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:150
+msgid "The ID of your AudiencePlayer account"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:155
+msgid "AudiencePlayer base url"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:156
+msgid "The AudiencePlayer base url (e.g. https://api.audienceplayer.com)"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:161
+msgid "OAuth client ID"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:162
+msgid "The provided client ID"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:167
+msgid "OAuth client secret"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:168
+msgid "The provided client secret"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:173
+msgid "Payment provider ID"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:174
+msgid "The payment provider ID (leave empty if not applicable)"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:178
+msgid "Synchronise user accounts"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:181
+msgid "On"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:182
+msgid "Off"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:185
+msgid "Synchronise Wordpress user accounts with AudiencePlayer (required if you intend to use AudiencePlayer Users/Subscriptions/Products!)"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:187
+msgid "WARNING: When set to \"ON\", all user actions taken such as deleting a user in Wordpress, will immediately be applied to the AudiencePlayer backend!!! Keep this in mind especially while still testing/developing in your Wordpress environment."
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:188
+msgid "For more information please see the help section"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:203
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:399
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:522
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:603
+msgid "There was something wrong with your input."
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:213
+msgid "The base url must start with https://"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:218
+msgid "The value must be a valid url, starting with \"https://\":"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:224
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:229
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:239
+msgid "The value must be numeric:"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:234
+msgid "The value must be alpha-numeric:"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:255
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:260
+msgid "Error, could not connect to the AudiencePlayer API with the provided credentials!"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:296
+msgid "Generic Article Detail Pages | [audienceplayer_article_detail]"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:308
+msgid "Article carousels and grids | [audienceplayer_article_carousel_grid]"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:315
+msgid "Save settings"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:328
+msgid "Series url slug"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:330
+msgid "The base url slug for the article detail page of articles with type \"series\". A given slug \"series\" will be mapped as:"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:338
+msgid "Episode url slug"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:340
+msgid "The base url slug for the article detail page of articles with type \"episode\". A given slug \"episodes\" will be mapped as follows:"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:348
+msgid "Film url slug"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:350
+msgid "The base url slug for the article detail page of articles with type \"film\". A given slug \"film\" will be mapped as:"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:358
+msgid "Video url slug"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:360
+msgid "The base url slug for the article detail page of articles with type \"video\". A given slug \"video\" will be mapped as:"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:371
+msgid "Default click action"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:374
+msgid "Modal video player (\"modal\")"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:375
+msgid "Dynamic Article detail page (\"auto\")"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:378
+msgid "After a click-action on an Article thumbnail in a carousel or grid, either the modal video player is displayed or the user will be redirected to a dynamic Article detail page."
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:380
+msgid "This setting can always be manually overwritten by defining a \"click-action\" argument in the shortcode itself: \"modal\" for the modal video player, \"auto\" for dynamic detail pages, or of course any other custom href-expression "
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:404
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:527
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:608
+msgid "The value may not be empty!"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:455
+msgid "Google Chromecast"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:458
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:479
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:581
+msgid "Disable"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:459
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:480
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:582
+msgid "Enable"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:462
+msgid "Enable the AudiencePlayer interface for Google Chromecast. "
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:465
+msgid "In order use this feature, Chromecast must be included in your AudiencePlayer plan."
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:466
+msgid "When enabled, the Google Chromecast connection button is automatically added to the main navigation menu."
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:468
+msgid "The Google Chromecast connection button is rendered based on the html template file \"audienceplayer_chromecast_button.html\", which can be modified/replaced similar to shortcode templates "
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:469
+msgid "see the help section for more information"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:470
+msgid "If this html template file is left empty, the Chromecast button will not be added. You can then choose your own place within your own theme to position it."
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:476
+msgid "WooCommerce&nbsp;<sup class=\"audienceplayer-admin-warning\">BETA</sup>"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:484
+msgid "Fulfilled and/or revoked orders for WooCommerce Products and Subscriptions are synchronised to AudiencePlayer."
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:486
+msgid "Warning: This feature is currently in \"Bèta\", meaning the feature is currently being extensively tested and still under development. Use with care and at your own risk!"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:491
+msgid "<strong>Products</strong>: Please add to your WooCommerce Product, a custom attribute \"audienceplayer_product_id\" with the value of your AudiencePlayer Product ID."
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:492
+msgid "Supported are Products created by the default plugin <a href=\"https://wordpress.org/plugins/woocommerce/\" target=\"\"_blank\">WooCommerce</a>."
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:500
+msgid "<strong>Subscriptions</strong>: Please add to your WooCommerce Subscription, a custom attribute \"audienceplayer_subscription_id\" with the value of your AudiencePlayer Subscription ID."
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:501
+msgid "Supported are Subscriptions created by plugins <a href=\"https://woocommerce.com/products/woocommerce-subscriptions/\" target=\"_blank\">WooCommerce Subscriptions</a> and <a href=\"https://wordpress.org/plugins/subscriptions-for-woocommerce/\" target=\"_blank\">WPSwings Subscriptions for WooCommerce</a>."
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:578
+msgid "JavaScript Console Debug"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:585
+msgid "Enable JavaScript console debugging. Debug information, particularly on shortcodes, will be pushed to the console log of the browser inspector, which is part of the browser's Development tools"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/AdminSetupTrait.php:588
+msgid "Warning: When activated, the debug information will be visible in the browser console for all users. Though in general sensitive information (like credentials) are never logged, use with care and at your own risk!"
+msgstr ""
+
+#: src/AudiencePlayer/AudiencePlayerWordpressPlugin/Resources/UserSyncTrait.php:430
+msgid "<strong>ERROR</strong>: E-mail address \""
+msgstr ""

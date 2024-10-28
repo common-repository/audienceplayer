@@ -1,0 +1,374 @@
+<div class="audienceplayer-admin">
+
+    <p>
+        To get your AudiencePlayer integration up to speed, customised
+        <a href="https://codex.wordpress.org/Shortcode" target="_new">Wordpress shortcodes</a> are available for the
+        most
+        important features (see overview below).
+        Style, layout and business logic contained in these shortcodes can easily be overwritten, or simply used
+        as a development template for your own customised integration (in which case, please also see the help section
+        <a href="?page={{SECTION_HELP_PAGE_SLUG}}&tab={{SECTION_HELP_TAB_CODE_EXAMPLES_PAGE_SLUG}}">{{SECTION_HELP_TAB_CODE_EXAMPLES_TITLE}}</a>).
+    </p>
+
+    <p>
+        To overwrite, simply copy the relevant file(s) into a matching folder/file structure in your active "theme"
+        folder.
+        The plugin will first look here for the relevant files, and fallback to its own templates.<br/>
+        For example, copy the file: <strong>/wp-content/plugins/audienceplayer/templates/audienceplayer-shortcode-article-detail.php</strong><br/>
+        to:
+        <strong>/wp-content/themes/twentytwenty/audienceplayer/templates/audienceplayer-shortcode-article-detail.php</strong><br/>
+        and modify it there to suit your requirements.
+    </p>
+
+    <p>
+        Location of the plugin template files:
+    <pre class="audienceplayer-admin-code-block">
+    /wp-content/plugins/audienceplayer/templates/audienceplayer-shortcode-*.php       # location of the main php/html shortcode template files
+    /wp-content/plugins/audienceplayer/templates/audienceplayer-generic-*.php         # location of the main php/html generic page template files
+                                                                                      # e.g. for generic video detail pages
+    /wp-content/plugins/audienceplayer/templates/js/audienceplayer-shortcodes.js      # location of the main javascript business logic
+    /wp-content/plugins/audienceplayer/templates/css/audienceplayer-shortcodes.css    # location of the css style file
+    /wp-content/plugins/audienceplayer/templates/images                               # location of image placeholders
+</pre>
+    </p>
+
+    <p>
+        Important notes:
+    <ol class="audienceplayer-admin-ol">
+        <li>
+            By default, the plugin makes a modal video player available which is based on the <a
+                href="https://github.com/AudiencePlayer/audienceplayer-embed-player" target="_blank">AudiencePlayer
+            Embed
+            Player for JavaScript</a> (also see the <a
+                href="?page={{SECTION_HELP_PAGE_SLUG}}&tab={{SECTION_HELP_TAB_CODE_EXAMPLES_PAGE_SLUG}}">{{SECTION_HELP_TAB_CODE_EXAMPLES_TITLE}}</a>
+            for more details).<br/>
+            Related template: <strong>templates/admin-core-html.php</strong><br/>
+            Dependent on Wordpress hooks/actions: <strong>wp_head</strong>, <strong>wp_body_open</strong>
+        </li>
+        <li>
+            By default, the plugin makes a few simple modal dialogs available to either allow the user to interact (e.g.
+            conduct a purchase) or to inform the user.<br/>
+            Related template: <strong>templates/admin-core-html.php</strong><br/>
+            Dependent on Wordpress hooks/actions: <strong>wp_head</strong>, <strong>wp_body_open</strong>, <strong>template_redirect</strong>
+        </li>
+        <li>
+            By default, the plugin makes a generic video page available (see shortcode [audienceplayer_article_detail])
+            to which a user can be redirected when clicking on thumbnails in an Article carousel or grid.
+            The url-paths of these generic pages, as well as the default click-behaviour of Article carousels/grids can
+            be
+            configured in the section <a
+                href="?page={{SECTION_CONFIGURATION_PAGE_SLUG}}&tab={{SECTION_CONFIGURATION_TAB_SHORTCODES_PAGE_SLUG}}">{{SECTION_CONFIGURATION_TAB_SHORTCODES_TITLE}}</a>.
+        </li>
+        <li>
+            By default, the plugin makes a few simple translations available which are fully synchronised with
+            AudiencePlayer and can be managed in the AudiencePlayer CMS. If needed, you may overwrite and/or customise
+            them as you see fit, e.g. to accommodate your own custom multi-language setup.
+            <br/>
+            Related template: <strong>templates/admin-core-translations.php</strong><br/>
+            Dependent on Wordpress hooks/actions: <strong>init</strong>
+        </li>
+        <li>
+            The business logic and/or templates may be improved and modified over time, as this plugin evolves. If you
+            use the shortcodes with templates as offered out-of-the-box, it is advised to review the changes and or test
+            these on your own test/staging environment, before deploying them to your production environment.
+        </li>
+    </ol>
+    </p>
+
+
+    <p><br/></p>
+
+    <h3>Overview of available shortcodes</h3>
+
+    <hr>
+    <!-- ############################################################################################################### -->
+
+    <a name="audienceplayer_article_carousel"></a>
+    <h4>[audienceplayer_article_carousel]</h4>
+
+    <a href="{{STATIC_BASE_URL}}images/example-shortcode-article-carousel.jpg" target="_blank"><img
+            src="{{STATIC_BASE_URL}}images/example-shortcode-article-carousel.jpg" border="0"
+            class="audienceplayer-admin-screenshot"/></a><br/>
+
+    This shortcode allows you to easily integrate a carousel. It uses the simple <a
+        href="https://kenwheeler.github.io/slick/" target="_blank">Slick carousel plugin</a>.
+    The main attributes to control the carousel content are "category_id" to display all articles within a given
+    category,
+    and "ancestor_id" to display all the descendant articles for a given parent article (e.g. display all lectures
+    within a series).
+    By default, clicking a thumbnail will open the modal video player. This behaviour can be overridden with attribute
+    "click_action".
+    <br/>
+    The respective php/html template is shared with shortcode "[audienceplayer_article_grid]".
+
+    <pre class="audienceplayer-admin-code-block">
+[audienceplayer_article_carousel
+    category_id=123               # Display articles in category.
+    ancestor_id=456               # Display child articles of ancestor.
+    aspect_ratio="16x9"           # Image aspect ratio (landscape "16x9" or portrait "2x3").
+    show_titles=true              # Display titles below the images.
+    click_action=""               # Your own custom deeplink pattern, e.g. "/articles/&#123;&#123;ancestor_id&#125;&#125;/&#123;&#123;article_id&#125;&#125;".
+                                  # available variables: [ancestor_id, article_id, category_id, asset_id, article_url_slug,
+                                  # ancestor_url_slug, category_url_slug, article_type_base_url_slug, article_series_base_url_slug, locale].
+                                  # if a full url or relative path (beginning with "/") is provided, action will redirect user,
+                                  # else given click_action will be assumed to be a callback function.
+                                  # special values: 1) "modal": playback on modal player, 2) "auto": auto-generate detail page.
+                                  # pattern used by value "default":
+                                  # > episodes: /&#123;&#123;article_series_base_url_slug&#125;&#125;/&#123;&#123;ancestor_url_slug&#125;&#125;/&#123;&#123;article_type_base_url_slug&#125;&#125;/&#123;&#123;article_url_slug&#125;&#125;/
+                                  # > all others: /&#123;&#123;article_type_base_url_slug&#125;&#125;/&#123;&#123;article_url_slug&#125;&#125;/
+    click_action_path_prefix=""   # Allows for a custom path prefix, e.g. a value "en" is beneficial to prefix with a specific language locale: "/en/...".
+                                  # the click action will always be prefixed with this argument when set.
+                                  # Optionally the value "&#123;&#123;locale&#125;&#125;" may be used, so that the shortcode will take care of
+                                  # prefixing the correct locale by internally calling:
+                                  # `$AudiencePlayerWordpressPlugin->helper()->getLocale();`
+    authentication_action=""      # Comparable to "click_action", this is executed when a user is not logged in and tries to
+                                  # view content. (by default, user is redirect to "wp-login?redirect_to=current_url").
+    authorisation_action=""       # Comparable to "click_action", this is executed when a user is not authorised to view
+                                  # content. (by default, a modal error dialog "payment required" is shown).
+    class=""                      # your own custom class name, which is applied to the root container element.
+]
+</pre>
+
+    <hr>
+
+    <a name="audienceplayer_article_grid"></a>
+    <h4>[audienceplayer_article_grid]</h4>
+
+    <a href="{{STATIC_BASE_URL}}images/example-shortcode-article-grid.jpg" target="_blank"><img
+            src="{{STATIC_BASE_URL}}images/example-shortcode-article-grid.jpg" border="0"
+            class="audienceplayer-admin-screenshot"/></a><br/>
+
+    This shortcode allows you to easily integrate a grid. The main attributes to control the carousel content are
+    "category_id"
+    to display all articles within a given category, and "ancestor_id" to display all the descendant articles for a
+    given parent
+    article (e.g. display all lectures within a series).
+    By default, clicking a thumbnail will open the modal video player. This behaviour can be overridden with attribute
+    "click_action".
+    <br/>
+    The respective php/html template is shared with shortcode "[audienceplayer_article_carousel]".
+
+    <pre class="audienceplayer-admin-code-block">
+[audienceplayer_article_grid
+    category_id=123               # Display articles in category.
+    ancestor_id=456               # Display child articles of ancestor.
+    limit=0                       # Pagination limit
+    offset=0                      # Pagination offset
+    show_pagination=true          # Show pagination bullets, only applies when a limit has been specified.
+    aspect_ratio="16x9"           # Image aspect ratio (landscape "16x9" or portrait "2x3").
+    show_titles=true              # Display titles below the images.
+    click_action=""               # Your own custom deeplink pattern, e.g. "/articles/&#123;&#123;ancestor_id&#125;&#125;/&#123;&#123;article_id&#125;&#125;".
+                                  # Available variables: [ancestor_id, article_id, category_id, asset_id, article_url_slug,
+                                  # ancestor_url_slug, category_url_slug].
+                                  # If a full url or relative path (beginning with "/") is provided, action will redirect user,
+                                  # else given click_action will be assumed to be a callback function.
+                                  # Special values: 1) "modal": playback on modal player, 2) "auto": auto-generate detail page.
+    authentication_action=""      # Comparable to "click_action", this is executed when a user is not logged in and tries to
+                                  # view content. (by default, user is redirect to "wp-login?redirect_to=current_url").
+    authorisation_action=""       # Comparable to "click_action", this is executed when a user is not authorised to view
+                                  # content. (by default, a modal error dialog "payment required" is shown).
+    class=""                      # your own custom class name, which is applied to the root container element.
+]
+</pre>
+
+    <hr>
+
+    <a name="audienceplayer_play_article_button"></a>
+    <h4>[audienceplayer_play_article_button]</h4>
+
+    <a href="{{STATIC_BASE_URL}}images/example-shortcode-play-article-button.jpg" target="_blank"><img
+            src="{{STATIC_BASE_URL}}images/example-shortcode-play-article-button.jpg" border="0"
+            class="audienceplayer-admin-screenshot"/></a><br/>
+
+    This shortcode allows you to easily display a "play button". Clicking this button will open the modal video player.
+
+    <pre class="audienceplayer-admin-code-block">
+[audienceplayer_play_article_button
+    article_id=123                # The article id which contains the asset.
+    asset_id=456                  # The asset_id to be played.
+    label="Afspelen"              # The text label that will appear in the button.
+    authentication_action=""      # Comparable to "click_action", this is executed when a user is not logged in and tries to
+                                  # view content. (by default, user is redirect to "wp-login?redirect_to=current_url")
+    authorisation_action=""       # Comparable to "click_action", this is executed when a user is not authorised to view
+                                  # content. (by default, a modal error dialog "payment required" is shown).
+    class=""                      # Your own custom class name, which is applied to the root container element.
+]
+</pre>
+
+    <hr>
+
+    <a name="audienceplayer_embed_article"></a>
+    <h4>[audienceplayer_embed_article]</h4>
+
+
+    <a href="{{STATIC_BASE_URL}}images/example-shortcode-embed-article.jpg" target="_blank"><img
+            src="{{STATIC_BASE_URL}}images/example-shortcode-embed-article.jpg" border="0"
+            class="audienceplayer-admin-screenshot"/></a><br/>
+
+    This shortcode allows you to easily display an embedded player. It is mainly intended for content that is freely
+    available,
+    since no authentication/authorisation actions are defined.
+
+    <pre class="audienceplayer-admin-code-block">
+[audienceplayer_embed_article
+    article_id=123                # The article id which contains the asset.
+    asset_id=456                  # The asset_id to be played.
+    height=384                    # Height of the embedded player.
+    width=216                     # Width of the embedded player.
+    autoplay=false                # Automatically start playback (IF the browser allows this. E.g. Safari does not).
+    poster_image_url=""           # Image url of poster to be placed in the background.
+    label="Play video"            # The text label that will appear in the button.
+    class=""                      # Your own custom class name, which is applied to the root container element.
+]
+</pre>
+
+    <hr>
+
+    <a name="audienceplayer_purchase_product_button"></a>
+    <h4>[audienceplayer_purchase_product_button]</h4>
+
+
+    <a href="{{STATIC_BASE_URL}}images/example-shortcode-purchase-product-button.jpg" target="_blank"><img
+            src="{{STATIC_BASE_URL}}images/example-shortcode-purchase-product-button.jpg" border="0"
+            class="audienceplayer-admin-screenshot"/></a><br/>
+
+    This shortcode allows you to easily display a purchase button for a give product. Clicking this button will open a
+    modal dialog flow via which the user can validate a voucher if applicable, conduct the payment with a remote payment
+    provider
+    and return to the page.
+
+    <pre class="audienceplayer-admin-code-block">
+[audienceplayer_purchase_product_button
+    product_id=123                # The product id of the product.
+    label="Buy product"           # The text label that will appear in the button, with fallbacks to 1. "Article.call_to_action_tag"
+                                  # (optionally defined in AudiencePlayer CMS) and 2. the translation "button_purchase_product" (see
+                                  # template "audienceplayer-core-translations.php").
+    show_voucher_validation=true  # Show voucher validation in the modal dialog flow.
+    authentication_action=""      # Comparable to "click_action", this is executed when a user is not logged in and tries to
+                                  # view content. (by default, user is redirect to "wp-login?redirect_to=current_url").
+                                  # The additional parameter "purchase_product_id" ensures the purchase modal is reopened on return.
+    authorisation_action=""       # Comparable to "click_action", this is executed when a user is not authorised to view
+                                  # content. (by default, a modal error dialog "payment required" is shown).
+    after_purchase_action=""      # Comparable to "click_action", this is executed after a user has successfully paid with
+                                  # the remote payment provider and returned to the page.
+    class=""                      # Your own custom class name, which is applied to the root container element.
+]
+</pre>
+
+    <hr>
+
+    <a name="audienceplayer_purchase_subscriptions"></a>
+    <h4>[audienceplayer_purchase_subscriptions]</h4>
+
+    <a href="{{STATIC_BASE_URL}}images/example-shortcode-purchase-subscriptions.jpg" target="_blank"><img
+            src="{{STATIC_BASE_URL}}images/example-shortcode-purchase-subscriptions.jpg" border="0"
+            class="audienceplayer-admin-screenshot"/></a><br/>
+
+    This shortcode allows you to show one or more subscription pricing banners. Clicking the "purchase" button within
+    the banner,
+    will open a modal dialog flow via which the user can validate a voucher if applicable, conduct the payment with a
+    remote
+    payment provider and return to the page.
+
+    <pre class="audienceplayer-admin-code-block">
+[audienceplayer_purchase_subscriptions
+    subscription_ids=1,2,3            # Specify the subscriptions to be  shown (by default, all are shown).
+    recommended_subscription_id=2     # The recommended subscription id will be highlighted with a "popular choice" ribbon.
+    recommended_subscription_label="" # The text shown in the "popular choice" ribbon.
+    label="Buy product"               # The text label that will appear in the buttons, with fallback to the translation
+                                      # "button_select_subscription" (see template "audienceplayer-core-translations.php").
+    show_voucher_validation=true      # Show voucher  validation in the modal dialog flow.
+    show_description=true             # Show the subscription description.
+    authentication_action=""          # Comparable to "click_action", this is executed when a user is not logged in and tries to
+                                      # view content. (by default, user is redirect to "wp-login?redirect_to=current_url").
+                                      # The additional parameter "purchase_subscription_id" ensures the purchase modal is reopened on return.
+    authorisation_action=""           # Comparable to "click_action", this is executed when a user is not authorised to view
+                                      # content. (by default, a modal error dialog "payment required" is shown).
+    after_purchase_action=""          # Comparable to "click_action", this is executed after a user has successfully paid with
+                                      # the remote payment provider and returned to the page.
+    class=""                          # Your own custom class name, which is applied to the root container element.
+]
+</pre>
+
+    <hr>
+
+    <a name="audienceplayer_article_detail"></a>
+    <h4>[audienceplayer_article_detail]</h4>
+
+    <a href="{{STATIC_BASE_URL}}images/example-shortcode-article-detail.jpg" target="_blank"><img
+            src="{{STATIC_BASE_URL}}images/example-shortcode-article-detail.jpg" border="0"
+            class="audienceplayer-admin-screenshot"/></a><br/>
+
+    This shortcode allows you to combine several shortcodes into one article detail section (title, description,
+    metadata,
+    play/product-purchase buttons, episodes).
+    The attributes below are unique to this shortcode, however additional attributes of the embedded shortcodes can be
+    passed as well.
+
+    <pre class="audienceplayer-admin-code-block">
+[audienceplayer_article_detail
+    article_id=123                # The article id for which details will be displayed.
+    meta_keys="year,parental"     # Comma separated list of metadata keys to be displayed.
+    show_trailer=true             # Show play-button for trailer (if available).
+    show_products=true            # Show purchase-button(s) for related products.
+    show_description=true         # Show the article description.
+    show_descendant_articles=true # Show descendant articles, applicable when given article_id is a series with seasons
+                                  # and/or episodes.
+    show_seasons=false            # Show season selector tabs so that only the episodes of selected seasons are displayed.
+                                    When false, all child episodes are automatically displayed.
+    authentication_action=""      # Comparable to "click_action", this is executed when a user is not logged in and tries to
+                                  # view content (by default, user is redirect to "wp-login?redirect_to=current_url").
+    authorisation_action=""       # Comparable to "click_action", this is executed when a user is not authorised to view
+                                  # content. (by default, a modal error dialog "payment required" is shown).
+    class=""                      # Your own custom class name, which is applied to the root container element.
+]
+</pre>
+
+    <hr>
+
+    <a name="audienceplayer_user_account"></a>
+    <h4>[audienceplayer_user_account]</h4>
+
+    <a href="{{STATIC_BASE_URL}}images/example-shortcode-user-account.jpg" target="_blank"><img
+            src="{{STATIC_BASE_URL}}images/example-shortcode-user-account.jpg" border="0"
+            class="audienceplayer-admin-screenshot"/></a><br/>
+
+    This shortcode allows you to display AudiencePlayer specific account details which the user can manage, e.g. switch
+    a user subscription, suspend a user subscription, change the payment method, validate voucher codes.
+
+    <pre class="audienceplayer-admin-code-block">
+[audienceplayer_user_account
+    show_subscription_info=true     # Display subscription information, including option for User to switch subscription.
+    show_subscription_suspend=true  # Display subscription (un)suspend toggle.
+    show_notifiable=false           # Display SMS/text-notification toggle (only applicable for some projects).
+    show_voucher_redeem=true        # Display voucher redemption.
+    show_payment_method=true        # Display payment method details.
+    show_payment_orders=true        # Display payment order list.
+    subscription_ids=1,2,3          # Specify the subscriptions to which a User can switch (by default, all are shown).
+    class=""                        # Your own custom class name, which is applied to the root container element.
+]
+</pre>
+
+    <hr>
+
+    <a name="audienceplayer_device_pairing"></a>
+    <h4>[audienceplayer_device_pairing]</h4>
+
+    <a href="{{STATIC_BASE_URL}}images/example-shortcode-device-pairing.jpg" target="_blank"><img
+            src="{{STATIC_BASE_URL}}images/example-shortcode-device-pairing.jpg" border="0"
+            class="audienceplayer-admin-screenshot"/></a><br/>
+
+    This shortcode allows you to display AudiencePlayer device pairing functionality, so that a user can pair a new
+    device and remove already paired devices.
+
+    <pre class="audienceplayer-admin-code-block">
+[audienceplayer_device_pairing
+    show_claim_device=true        # Display form to claim a pairing code for a new device.
+    show_user_devices=true        # Display list of already paired devices.
+    class=""                      # Your own custom class name, which is applied to the root container element.
+]
+</pre>
+
+    <hr>
+
+</div>

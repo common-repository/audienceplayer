@@ -1,0 +1,191 @@
+<div class="audienceplayer-admin">
+
+    <h3>Code examples</h3>
+
+    <p>
+        On each request this plugin is instantiated as a global object, you do not need to instantiate it again:
+    </p>
+
+    <pre class="audienceplayer-admin-code-block">
+    $AudiencePlayerWordpressPlugin
+</pre>
+
+    <h3>API queries</h3>
+
+    <p>
+        The AudiencePlayer API is based on <a href="https://graphql.org/learn/queries/" target="_blank">GraphQL</a>. The
+        integrated
+        <a href="https://github.com/AudiencePlayer/audienceplayer-api-client-php" target="_blank">AudiencePlayer API
+            client for PHP</a> offers convenient shorthand wrapper methods for the most commonly used queries and
+        mutations but also provides the possibility to directly execute a "raw" GraphQL operation.
+    </p>
+
+    <pre class="audienceplayer-admin-code-block">
+    # Fetch user details
+    $AudiencePlayerWordpressPlugin->api()->query
+        ->ArticleList()
+        ->paginate(25, 0)
+        ->properties(['id', 'name', 'metas' => ['key', 'value']])
+        ->sort('published_at', 'desc')
+        ->execute();
+
+    # Same query conducted as a "raw" operation
+    $AudiencePlayerWordpressPlugin->api()->executeRawGraphQLCall(
+        AudiencePlayerApiClient::OAUTH_SCOPE_USER,  # the oauth-scope you wish to address the api with
+        'query { ArticleList (limit:25 offset:0)    # raw GraphQL operation (query/mutation)
+         {id name metas{key value}}}'
+    );
+</pre>
+
+    <p>
+        The API-client can also easily be addressed using the ajax-endpoint "audienceplayer_api_call" provided by the
+        plugin.
+        It takes raw <a href="https://graphql.org/learn/queries/" target="_blank">GraphQL</a> operations.
+    </p>
+
+    <pre class="audienceplayer-admin-code-block">
+    var operation = 'query { ArticleList (category_id:123) { id name metas{key value} } }';
+    
+    $.post('/wp-admin/admin-ajax.php', {                                                                   
+        action: 'audienceplayer_api_call',                                                                 
+        operation: operation
+        variables: []
+    }).done(function (response) {
+        console.log('success', response);
+    }).fail(function (response) {
+        console.log('fail', response);
+                                           
+    });
+</pre>
+
+    <h3>Plugin helper methods</h3>
+
+    A batch of convenient helper methods are available to interact with the data more easily:
+
+    <ul class="audienceplayer-admin-ul">
+        <li><strong>->isAuthenticated()</strong><br/>
+            Check if the remote AudiencePlayer user is authenticated
+        </li>
+
+        <li><strong>->fetchApiBaseUrl()</strong><br/>
+            Fetch the configured AudiencePlayer base url
+        </li>
+
+        <li><strong>->fetchProjectId()</strong><br/>
+            Fetch the configured AudiencePlayer project id
+        </li>
+
+        <li><strong>->fetchPaymentProviderId()</strong><br/>
+            Fetch the configured AudiencePlayer payment provider id
+        </li>
+
+        <li><strong>->fetchUserBearerToken()</strong><br/>
+            Fetch the configured AudiencePlayer user OAuth2 bearer token
+        </li>
+
+        <li><strong>->fetchCurrentAudiencePlayerUser()</strong><br/>
+            Fetch the AudiencePlayer user synchronised with the current wp user
+        </li>
+
+        <li><strong>->fetchEmbedPlayerLibraryBaseUrl()</strong><br/>
+            Fetch the base url of the Embed Player JavaScript library
+        </li>
+
+        <li><strong>->fetchMetaValueForKey(array $metas, string $key, $fallbackValue = null)</strong><br/>
+            Helper to quickly fetch a value for a given meta-field from the structure "metas {key value}"
+        </li>
+
+        <li><strong>->fetchImageWithAspectRatio(array $images, string $aspectRatioProfile = '16x9', int $fallbackIndex =
+            0)</strong><br/>
+            Helper to quickly fetch an image with preferred aspect ratio from the structure "images {url
+            aspect_ratio_profile}"
+        </li>
+
+        <li><strong>->fetchTranslations(mixed $key = null)</strong><br/>
+            Helper to quickly fetch a translation (as set in template "audienceplayer-core-translations.php").
+        </li>
+
+        <li><strong>->setTranslations($key, $value = null)</strong><br/>
+            Helper to set a translation
+        </li>
+
+        <li><strong>->isOrderValidated(int $orderId)</strong><br/>
+            Check if a certain order was validated during the current request
+        </li>
+
+        <li><strong>->fetchValidatedOrder(int $orderId)</strong><br/>
+            Fetch a certain validated order to obtain all the details (e.g. useful when implementing your own commercial
+            tracking events like GTM).
+        </li>
+
+    </ul>
+
+    <h3>Modal player</h3>
+
+    <p>
+        You can open the modal player by using the instantiated global javascript helper
+        <strong>window.AudiencePlayerCore</strong>:
+    </p>
+
+    <pre class="audienceplayer-admin-code-block">
+    window.AudiencePlayerCore.openModalPlayer(
+        event,
+        articleId,
+        assetId,
+        callbackAuthenticationError,
+        callbackAuthorisationError,
+        callbackGeneralError
+    );
+</pre>
+    <br/>
+
+    <h3>Subscription/Product entitlements via Wordpress</h3>
+
+    <p>
+        If you cannot or do not want to use the AudiencePlayer payment/entitlement flow facilitated by this plugin, you
+        need to set up purchases via Wordpress. In the <a href="https://wordpress.org/plugins" target="_blank">Wordpress
+        ecosystem</a> there are many e-Commerce plugins available (e.g. WooCommerce, Magento, etc).
+        <br/><br/>
+        <em>→ N.B. We have introduced a <a
+                href="?page={{SECTION_CONFIGURATION_PAGE_SLUG}}&tab={{SECTION_CONFIGURATION_TAB_INTEGRATIONS_PAGE_SLUG}}">bèta
+            feature</a> which automatically applies the logic described below, to the WooCommerce plugin.</em>
+        <br/><br/>
+        After a User has purchased a product via your e-Commerce plugin which should entitle the User to the playback of
+        one or more video Articles, you need to reflect this entitlement in AudiencePlayer as well. This ensures that
+        the User can play given video Articles on all platforms (i.e. besides Wordpress there might be other
+        AudiencePlayer platforms you use like native mobile apps, Smart TV etc):<br/>
+    <ol>
+        <li>First set up the necessary Subscription(s) and or Product(s) in AudiencePlayer CMS.
+        </li>
+        <li>In Wordpress, ensure that you can label your Wordpress e-Commerce products with the relevant AudiencePlayer
+            Product/Subscription ID (e.g. through an "SKU" or "external_id" meta field provided by your e-Commerce
+            plugin).
+        </li>
+        <li>Set up a callback in a Wordpress action or filter made available by your e-Commerce plugin upon completion
+            or refund of a purchase.
+            In this callback, you can use the two helper methods below, to simpy fulfil or revoke the entitlment in
+            AudiencePlayer.
+        </li>
+    </ol>
+    </p>
+
+    <pre class="audienceplayer-admin-code-block">
+    ### Sync entitlement for a User to an AudiencePlayer Subscription
+    $result = $AudiencePlayerWordpressPlugin->syncWordpressUserSubscriptionEntitlementToAudiencePlayer(
+        \get_current_user_id(),                 # ID of the currently logged-in Wordpress User
+        123,                                    # ID if the AudiencePlayer Subscription
+        'fulfil',                               # Either 'fulfil' or 'revoke' the entitlement
+        new \DateTime('2022-12-12T20:00:00Z')   # In case of 'fulfil', specify the expiry date of the entitlement
+
+    );
+
+    ### Sync entitlement for a User to an AudiencePlayer Product
+    $result = $AudiencePlayerWordpressPlugin->syncWordpressUserProductEntitlementToAudiencePlayer(
+        \get_current_user_id(),                 # ID of the currently logged-in Wordpress User
+        456,                                    # ID if the AudiencePlayer Product
+        'fulfil'                                # Either 'fulfil' or 'revoke' the entitlement
+    );
+</pre>
+    <br/>
+
+</div>
